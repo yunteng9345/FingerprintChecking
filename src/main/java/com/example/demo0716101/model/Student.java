@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class Student {
-    private Integer u_id;
+    private String u_id;
     private String u_name;
     private char u_sex;
     private Integer u_age;

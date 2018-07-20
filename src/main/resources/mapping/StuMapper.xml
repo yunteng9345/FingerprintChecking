@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo0716101.Dao.StuMapper" >
     <select id="showAllStu" resultType="com.example.demo0716101.model.Student">
-        select * from stu_info
+        select * from u_user
     </select>
     <insert id="addStu" parameterType="com.example.demo0716101.model.Student">
 
-        insert into stu_info(id,name,sex,age,biye)values (#{uid},#{ufingerid},#{uname},#{usex},#{uage},#{uclass},#{uacadmey},#{urtime})
+        insert into u_user(uid,ufingerid,uname,usex,uage,uclass,uacadmey,urtime)values (#{u_id},#{u_fingerid},#{u_name},#{u_sex},#{u_age},#{u_class},#{uacadmey},#{u_rTime})
     </insert>
 
     <delete id="deleteStu" parameterType="Integer">
-        delete from stu_info where id=#{id}
+        delete from u_user where id=#{id}
 
     </delete>
 
     <select id="selectOne" resultType="com.example.demo0716101.model.Student">
-        select * from stu_info where id=#{id}
+        select * from u_user where id=#{id}
     </select>
 
 </mapper>

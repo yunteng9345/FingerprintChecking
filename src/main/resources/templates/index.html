@@ -3,13 +3,9 @@
 <head>
 
 
-    <!--<style>-->
-    <!--body{text-align:center;}-->
-    <!--</style>-->
-
     <meta charset="UTF-8" />
     <title>Fingerprint Attendance OS</title>
-    <link href="/css/main.css" rel="stylesheet" />
+
 </head>
 <body style=>
 <h1 >I am a coder!</h1>
@@ -35,11 +31,10 @@
         <td th:text="${user.u_academy}">院系</td>
         <td th:text="${user.u_classes}">班级</td>
         <td th:text="${user.u_rTime}">注册时间</td>
-        <td th:text="${user.u_fingerId}">注册时间</td>
+        <td th:text="${user.u_fingerId}">指纹id</td>
 
 
         <td><a th:href="@{/stu/delet(id=${user.u_id})}">delete</a></td>
-
 
     </tr>
 
@@ -47,44 +42,48 @@
 <br><br>
 
 
-<form th:action="@{/stu/addStu}" th:object="${student}" method="POST">
-    <label>学号:</label>
-    <input type="text" th:field="*{u_id}"  /><br/>
 
-    <label >姓名:</label>
-    <input type="text" th:field="*{u_name}"  /> <br/>
+<!--<form th:action="@{/stu/addStu}" th:object="${student}" method="POST">-->
+    <!--<label>学号:</label>-->
+    <!--<input type="text" th:field="*{u_id}"  /><br/>-->
 
-    <label >性别:</label>
-    <select  th:field="*{u_sex}" >
-        <option th:value="男" >男</option>
-        <option th:value="女">女</option>
-    </select>
-    <br>
+    <!--<label >姓名:</label>-->
+    <!--<input type="text" th:field="*{u_name}"  /> <br/>-->
 
-    <label>年龄:</label>
-    <input type="text" th:field="*{u_age}" size="10" value="198" /><br/>
+    <!--<label >性别:</label>-->
+    <!--<select  th:field="*{u_sex}" >-->
+        <!--<option th:value="男" >男</option>-->
+        <!--<option th:value="女">女</option>-->
+    <!--</select>-->
+    <!--<br>-->
 
-    <label>指纹录入</label>
-    <input type="text" th:field="*{u_fingerId}" size="10" value="198" /><br/>
+    <!--<label>年龄:</label>-->
+    <!--<input type="text" th:field="*{u_age}" size="10" value="198" /><br/>-->
 
-    <label >院系</label>
-    <select th:field="*{u_academy}">
-        <option th:value="xxxx学院">1xxxx学院</option>
-        <option th:value="xxxx学院" >2xxxx学院</option>
-    </select>
+    <!--<label>指纹录入</label>-->
+    <!--<input type="text" th:field="*{u_fingerId}" size="10" value="198" /><br/>-->
 
-    <label >班级</label>
-    <select th:field="*{u_classes}">
-        <option th:value="xxx班级">1xxxx班级</option>
-        <option th:value="xxx班级" >2xxxx班级</option>
-    </select>
+    <!--<label >院系</label>-->
+    <!--<select th:field="*{u_academy}">-->
+        <!--<option th:value="xxxx学院">1xxxx学院</option>-->
+        <!--<option th:value="xxxx学院" >2xxxx学院</option>-->
+    <!--</select>-->
+
+    <!--<label >班级</label>-->
+    <!--<select th:field="*{u_classes}">-->
+        <!--<option th:value="xxx班级">1xxxx班级</option>-->
+        <!--<option th:value="xxx班级" >2xxxx班级</option>-->
+    <!--</select>-->
+
+    <!--<label>注册时间</label>-->
+    <!--<input type="text" th:field="*{u_rTime}" size="10" value="198" /><br/>-->
 
 
 
-    <br/>
-    <input type="submit" value="添加"/>
+    <!--<br/>-->
+    <!--<input type="submit" value="添加"/>-->
 
-</form>
+<!--</form>-->
 
 
 <!--<select>
