@@ -6,7 +6,7 @@
     </select>
     <insert id="addStu" parameterType="com.example.demo0716101.model.Student">
 
-        insert into stu_info(id,name,sex,age,biye)values (#{id},#{name},#{sex},#{age},#{biye})
+        insert into stu_info(id,name,sex,age,biye)values (#{uid},#{ufingerid},#{uname},#{usex},#{uage},#{uclass},#{uacadmey},#{urtime})
     </insert>
 
     <delete id="deleteStu" parameterType="Integer">

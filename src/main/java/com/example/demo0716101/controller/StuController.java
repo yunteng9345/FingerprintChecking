@@ -38,14 +38,12 @@ public class StuController {
         return  "redirect:show";
 
     }
-    @RequestMapping(value = "/selectOne",method = RequestMethod.POST)
-    public String selectOne(@ModelAttribute(value="stu1")Student  student,ModelMap mode){
-        stuService.selectOne(student.getId());
-        mode.addAttribute("stu1",new Student());
-        System.out.println(student.getId());
-        return  "redirect:show";
-    }
-
-
+//    @RequestMapping(value = "/selectOne",method = RequestMethod.POST)
+//    public String selectOne(@ModelAttribute(value="stu1")Student  student,ModelMap mode){
+//        stuService.selectOne(student.getU_id());
+//        mode.addAttribute("stu1",new Student());
+//        System.out.println(student.get());
+//        return  "redirect:show";
+//    }
 
 }

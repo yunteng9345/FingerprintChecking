@@ -21,19 +21,24 @@
         <th>姓名</th>
         <th>性别</th>
         <th>年龄</th>
-        <th>是否毕业</th>
-        <th>删除</th>
+        <th>院系</th>
+        <th>班级</th>
+        <th>注册时间</th>
+        <th>指纹id</th>
     </tr>
 
     <tr th:each="user : ${stu}">
-        <td th:text="${user.id}">学号</td>
-        <td th:text="${user.name}">姓名</td>
-        <td th:text="${user.sex}">性别</td>
-        <td th:text="${user.age}">年龄</td>
-        <td th:if="${user.isBiye()}==true">是</td>
-        <td th:if="${user.isBiye()}==false">否</td>
+        <td th:text="${user.u_id}">学号</td>
+        <td th:text="${user.u_name}">姓名</td>
+        <td th:text="${user.u_sex}">性别</td>
+        <td th:text="${user.u_age}">年龄</td>
+        <td th:text="${user.u_academy}">院系</td>
+        <td th:text="${user.u_classes}">班级</td>
+        <td th:text="${user.u_rTime}">注册时间</td>
+        <td th:text="${user.u_fingerId}">注册时间</td>
 
-        <td><a th:href="@{/stu/delet(id=${user.id})}">delete</a></td>
+
+        <td><a th:href="@{/stu/delet(id=${user.u_id})}">delete</a></td>
 
 
     </tr>
@@ -44,31 +49,39 @@
 
 <form th:action="@{/stu/addStu}" th:object="${student}" method="POST">
     <label>学号:</label>
-    <input type="text" th:field="*{id}"  /><br/>
+    <input type="text" th:field="*{u_id}"  /><br/>
 
     <label >姓名:</label>
-    <input type="text" th:field="*{name}"  /> <br/>
+    <input type="text" th:field="*{u_name}"  /> <br/>
 
     <label >性别:</label>
-    <select  th:field="*{sex}" >
+    <select  th:field="*{u_sex}" >
         <option th:value="男" >男</option>
         <option th:value="女">女</option>
     </select>
     <br>
 
     <label>年龄:</label>
-    <input type="text" th:field="*{age}" size="10" value="198" /><br/>
+    <input type="text" th:field="*{u_age}" size="10" value="198" /><br/>
 
-    <label >是否毕业</label>
-    <select th:field="*{biye}">
-        <option th:value="true">是</option>
-        <option th:value="false" >否</option>
+    <label>指纹录入</label>
+    <input type="text" th:field="*{u_fingerId}" size="10" value="198" /><br/>
 
+    <label >院系</label>
+    <select th:field="*{u_academy}">
+        <option th:value="xxxx学院">1xxxx学院</option>
+        <option th:value="xxxx学院" >2xxxx学院</option>
+    </select>
+
+    <label >班级</label>
+    <select th:field="*{u_classes}">
+        <option th:value="xxx班级">1xxxx班级</option>
+        <option th:value="xxx班级" >2xxxx班级</option>
     </select>
 
 
-    <br/>
 
+    <br/>
     <input type="submit" value="添加"/>
 
 </form>
