@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <!--<style>-->
+    <!--body{text-align:center;}-->
+    <!--</style>-->
+
+    <meta charset="UTF-8" />
+    <title>Fingerprint Attendance OS</title>
+    <link href="/css/main.css" rel="stylesheet" />
+</head>
+<body style=>
+<h1 >I am a coder!</h1>
+
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>是否毕业</th>
+        <th>删除</th>
+    </tr>
+
+    <tr th:each="user : ${stu}">
+        <td th:text="${user.id}">学号</td>
+        <td th:text="${user.name}">姓名</td>
+        <td th:text="${user.sex}">性别</td>
+        <td th:text="${user.age}">年龄</td>
+        <td th:if="${user.isBiye()}==true">是</td>
+        <td th:if="${user.isBiye()}==false">否</td>
+
+        <td><a th:href="@{/stu/delet(id=${user.id})}">delete</a></td>
+
+
+    </tr>
+
+</table>
+<br><br>
+
+
+<form th:action="@{/stu/addStu}" th:object="${student}" method="POST">
+    <label>学号:</label>
+    <input type="text" th:field="*{id}"  /><br/>
+
+    <label >姓名:</label>
+    <input type="text" th:field="*{name}"  /> <br/>
+
+    <label >性别:</label>
+    <select  th:field="*{sex}" >
+        <option th:value="男" >男</option>
+        <option th:value="女">女</option>
+    </select>
+    <br>
+
+    <label>年龄:</label>
+    <input type="text" th:field="*{age}" size="10" value="198" /><br/>
+
+    <label >是否毕业</label>
+    <select th:field="*{biye}">
+        <option th:value="true">是</option>
+        <option th:value="false" >否</option>
+
+    </select>
+
+
+    <br/>
+
+    <input type="submit" value="添加"/>
+
+</form>
+
+
+<!--<select>
+    <option th:each="user:${userList}" th:value="${user.id}" th:text="${user.name}">我是默认值</option>
+</select>-->
+
+</body>
+</html>

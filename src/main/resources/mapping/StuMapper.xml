@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo0716101.Dao.StuMapper" >
+    <select id="showAllStu" resultType="com.example.demo0716101.model.Student">
+        select * from stu_info
+    </select>
+    <insert id="addStu" parameterType="com.example.demo0716101.model.Student">
+
+        insert into stu_info(id,name,sex,age,biye)values (#{id},#{name},#{sex},#{age},#{biye})
+    </insert>
+
+    <delete id="deleteStu" parameterType="Integer">
+        delete from stu_info where id=#{id}
+
+    </delete>
+
+    <select id="selectOne" resultType="com.example.demo0716101.model.Student">
+        select * from stu_info where id=#{id}
+    </select>
+
+</mapper>
