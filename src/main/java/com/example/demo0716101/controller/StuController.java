@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 @Controller
 @RequestMapping("/stu")
 public class StuController {
     @Autowired
 
     private StuService stuService;
-
+//rest
     @RequestMapping("/show")
     public String showAllStudent(ModelMap mode){
         mode.addAttribute("stu",stuService.showAllStu());
