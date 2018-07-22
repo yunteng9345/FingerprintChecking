@@ -7,14 +7,13 @@ import java.util.Date;
 
 @Data
 public class Student {
-    private String u_id;
-    private String u_name;
-    private char u_sex;
-    private Integer u_age;
-    private String u_classes;
-    private String u_academy;
-    private String u_fingerId;
-    private Date u_rTime;
-    //private boolean biye;
+    private String uid;
+    private String uname;
+    private String usex;
+    private Integer uage;
+    private String uclass;
+    private String uacademy;
+    private String ufingerid;
+    private Date urtime;
 
 }

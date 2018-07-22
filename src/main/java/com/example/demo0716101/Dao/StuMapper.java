@@ -9,7 +9,7 @@ import java.util.List;
 public interface StuMapper {
 
     List<Student> showAllStu();
-    Integer deleteStu(Integer id);
+    Integer deleteStu(String id);
     Integer updateStu(Integer id);
     Integer addStu(Student student);
     Student selectOne(Integer id);

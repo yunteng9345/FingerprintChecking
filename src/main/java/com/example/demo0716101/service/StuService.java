@@ -18,7 +18,7 @@ public class StuService {
         return stuMapper.addStu(student);
     }
 
-    public Integer deleteStu(Integer id) {
+    public Integer deleteStu(String id) {
         return stuMapper.deleteStu(id);
     }
 
@@ -34,3 +34,6 @@ public class StuService {
 
 
 }
+
+
+
