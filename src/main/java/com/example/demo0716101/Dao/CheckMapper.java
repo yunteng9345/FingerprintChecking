@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CheckMapper {
     Integer insertTime(Check check);
-    Integer selectOne(Check check);
+
+    Check selectOne(Check check);
+
+    Integer updateOne(Check check);
 
 
 }

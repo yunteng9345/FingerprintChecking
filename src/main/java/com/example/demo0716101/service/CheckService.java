@@ -11,8 +11,15 @@ public class CheckService {
     @Autowired
     private CheckMapper checkMapper;
 
-    public Integer insertTime(Check check){
+    public Integer insertTime(Check check) {
         return checkMapper.insertTime(check);
     }
-    public Integer selectOne(Check check){return  checkMapper.selectOne(check);}
+
+    public Check selectOne(Check check) {
+        return checkMapper.selectOne(check);
+    }
+
+    public Integer updateOne(Check check){
+        return  checkMapper.updateOne(check);
+    }
 }

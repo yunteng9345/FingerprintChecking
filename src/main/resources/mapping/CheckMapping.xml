@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo0716101.Dao.CheckMapper" >
+<mapper namespace="com.example.demo0716101.Dao.CheckMapper">
 
 
     <!--<select id="showAllStu" resultType="com.example.demo0716101.model.Student">-->
-        <!--select * from u_user-->
+    <!--select * from u_user-->
     <!--</select>-->
     <insert id="insertTime" parameterType="com.example.demo0716101.model.Check">
-        insert into u_check(fid,clock_in_1)values (#{fid},#{clock_in_1})
+        insert into u_check(fid,clock_in_1,flag)values (#{fid},#{clock_in_1},#{flag})
     </insert>
 
     <!--<delete id="deleteStu" parameterType="String">-->
-        <!--delete from u_user where uid=#{uid}-->
+    <!--delete from u_user where uid=#{uid}-->
 
     <!--</delete>-->
 
-    <select id="selectOne" resultType="Integer">
+
+    <update id="updateOne" parameterType="com.example.demo0716101.model.Check">
+        update u_check set clock_in_2 =#{clock_in_2},flag=#{flag} where fid=#{fid}
+    </update>
+
+    <select id="selectOne" resultType="com.example.demo0716101.model.Check">
         select * from u_check where fid=#{fid}
     </select>
 
