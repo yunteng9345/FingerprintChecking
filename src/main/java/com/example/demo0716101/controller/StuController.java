@@ -16,7 +16,6 @@ import java.util.Date;
 public class StuController {
 
     /*
-
     *显示所有学生的信息
     * */
     @Autowired
