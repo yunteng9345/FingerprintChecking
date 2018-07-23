@@ -30,7 +30,7 @@ public class StuService {
         return stuMapper.showAllStu();
     }
 
-    public  Student selectOne(Integer id){return  stuMapper.selectOne(id);}
+    public  Student selectOne(Student  student){return  stuMapper.selectOne(student);}
 
 
 }

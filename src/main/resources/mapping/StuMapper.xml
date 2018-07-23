@@ -17,7 +17,7 @@
     </delete>
 
     <select id="selectOne" resultType="com.example.demo0716101.model.Student">
-        select * from u_user where uid=#{uid}
+        select * from u_user where ufingerid=#{ufingerid}
     </select>
 
 </mapper>

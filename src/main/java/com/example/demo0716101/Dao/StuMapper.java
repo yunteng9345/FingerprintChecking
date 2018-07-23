@@ -12,6 +12,6 @@ public interface StuMapper {
     Integer deleteStu(String id);
     Integer updateStu(Integer id);
     Integer addStu(Student student);
-    Student selectOne(Integer id);
+    Student selectOne(Student student);
 
 }
