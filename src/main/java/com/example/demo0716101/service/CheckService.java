@@ -22,4 +22,7 @@ public class CheckService {
     public Integer updateOne(Check check){
         return  checkMapper.updateOne(check);
     }
+    public Integer updateOne1(Check check){
+        return  checkMapper.updateOne1(check);
+    }
 }

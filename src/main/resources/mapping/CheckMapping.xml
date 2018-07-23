@@ -20,6 +20,11 @@
         update u_check set clock_in_2 =#{clock_in_2},flag=#{flag} where fid=#{fid}
     </update>
 
+
+    <update id="updateOne1" parameterType="com.example.demo0716101.model.Check">
+        update u_check set flag=#{flag} where fid=#{fid}
+    </update>
+
     <select id="selectOne" resultType="com.example.demo0716101.model.Check">
         select * from u_check where fid=#{fid}
     </select>

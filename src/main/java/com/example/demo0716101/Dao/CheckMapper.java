@@ -10,6 +10,6 @@ public interface CheckMapper {
     Check selectOne(Check check);
 
     Integer updateOne(Check check);
-
+    Integer updateOne1(Check check);
 
 }
