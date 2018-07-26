@@ -15,16 +15,19 @@
         <th>班级</th>
         <th>第一次打卡时间</th>
         <th>第二次打卡时间</th>
+        <th>是否迟到</th>
+        <th>是否早退</th>
 
     </tr>
 
-    <tr th:each="check : ${todaycheck}" >
+    <tr th:each="check : ${todaycheck}"   >
         <td th:text="${check.uname}">姓名</td>
         <td th:text="${check.uacademy}">院系</td>
         <td th:text="${check.uclass}">班级</td>
         <td th:text="${#dates.format(check.clock_in_1, 'yyyy-MM-dd hh:mm:ss')}">第一次打卡时间</td>
         <td th:text="${#dates.format(check.clock_in_2, 'yyyy-MM-dd hh:mm:ss')}">第二次打卡时间</td>
-
+        <td th:text="${check.late}">迟到</td>
+        <td th:text="${check.before}">早退</td>
 
     </tr>
 

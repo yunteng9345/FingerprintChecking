@@ -29,4 +29,7 @@ public class CheckService {
     }
 
     public List<Check> selectCheckByTime(String time1){return  checkMapper.selectCheckByTime(time1);}
+
+    public Integer upCD(String cd,String fid){return checkMapper.upCD(cd,fid);}
+    public Integer upZT(String zt,String fid){return  checkMapper.upZT(zt,fid);}
 }
