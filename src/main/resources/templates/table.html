@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>考勤表</title>
+</head>
+<body>
+<h1>当天考勤</h1>
+
+<table border="1">
+    <tr>
+
+        <th>姓名</th>
+        <th>院系</th>
+        <th>班级</th>
+        <th>第一次打卡时间</th>
+        <th>第二次打卡时间</th>
+
+    </tr>
+
+    <tr th:each="check : ${todaycheck}" >
+        <td th:text="${check.uname}">姓名</td>
+        <td th:text="${check.uacademy}">院系</td>
+        <td th:text="${check.uclass}">班级</td>
+        <td th:text="${#dates.format(check.clock_in_1, 'yyyy-MM-dd hh:mm:ss')}">第一次打卡时间</td>
+        <td th:text="${#dates.format(check.clock_in_2, 'yyyy-MM-dd hh:mm:ss')}">第二次打卡时间</td>
+
+
+    </tr>
+
+</table>
+</body>
+</html>

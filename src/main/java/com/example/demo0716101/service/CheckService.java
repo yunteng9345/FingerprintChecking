@@ -5,6 +5,8 @@ import com.example.demo0716101.model.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CheckService {
 
@@ -25,4 +27,6 @@ public class CheckService {
     public Integer updateOne1(Check check){
         return  checkMapper.updateOne1(check);
     }
+
+    public List<Check> selectCheckByTime(String time1){return  checkMapper.selectCheckByTime(time1);}
 }

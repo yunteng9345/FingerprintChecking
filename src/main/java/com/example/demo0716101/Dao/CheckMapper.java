@@ -1,7 +1,10 @@
 package com.example.demo0716101.Dao;
 
 import com.example.demo0716101.model.Check;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface CheckMapper {
@@ -11,5 +14,7 @@ public interface CheckMapper {
 
     Integer updateOne(Check check);
     Integer updateOne1(Check check);
+
+    List<Check> selectCheckByTime (@Param("time1")String time1);
 
 }

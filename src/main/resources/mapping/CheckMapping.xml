@@ -28,5 +28,9 @@
     <select id="selectOne" resultType="com.example.demo0716101.model.Check">
         select * from u_check where fid=#{fid}
     </select>
+    
+    <select id="selectCheckByTime" resultType="com.example.demo0716101.model.Check">
+      select * from u_check c,u_user u where u.ufingerid=c.fid and c.clock_in_2 like #{time1}"%"
+    </select>
 
 </mapper>

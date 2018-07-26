@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Check {
+public class Check extends  Student{
     private String fid;
     private Date clock_in_1;
     private Date clock_in_2;
