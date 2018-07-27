@@ -45,7 +45,6 @@ public class TableController {
                 checkService.upCD("0", check.getFid());
             }
 
-
             if (compTime(DATE2, check.getClock_in_2().toString().substring(11, 18))) {
                 checkService.upZT("1", check.getFid());
 //                    System.out.println("早退");
