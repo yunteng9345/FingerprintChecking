@@ -5,7 +5,9 @@
     <title>考勤表</title>
 </head>
 <body>
-<h1>当天考勤</h1>
+<h1 th:text="${nowday}+'考勤'"></h1>
+
+
 
 <table border="1">
     <tr>
@@ -26,8 +28,10 @@
         <td th:text="${check.uclass}">班级</td>
         <td th:text="${#dates.format(check.clock_in_1, 'yyyy-MM-dd hh:mm:ss')}">第一次打卡时间</td>
         <td th:text="${#dates.format(check.clock_in_2, 'yyyy-MM-dd hh:mm:ss')}">第二次打卡时间</td>
-        <td th:text="${check.late}">迟到</td>
-        <td th:text="${check.before}">早退</td>
+        <td bgcolor="red" th:if="${check.late}==1" th:text="迟到">迟到</td>
+        <td bgcolor="#7cfc00" th:if="${check.late}==0" th:text="正常" >正常</td>
+        <td bgcolor="red" th:if="${check.befor}==1" th:text="早退">早退</td>
+        <td bgcolor="#7cfc00" th:if="${check.befor}==0" th:text="正常">正常</td>
 
     </tr>
 

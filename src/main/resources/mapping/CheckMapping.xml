@@ -41,7 +41,7 @@
     </update>
 
     <update id="upZT">
-        update u_check set before =#{zt} where fid=#{fid}
+        update u_check set befor =#{zt} where fid=#{fid}
     </update>
 
 

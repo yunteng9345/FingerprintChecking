@@ -1,17 +1,12 @@
 package com.example.demo0716101.controller;
 
-import ch.qos.logback.core.db.dialect.SybaseSqlAnywhereDialect;
 import com.example.demo0716101.model.Check;
 import com.example.demo0716101.service.CheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,22 +32,33 @@ public class TableController {
         String DATE1 = "09:00:00";//第一次考勤，打卡时间大于这个时间是迟到
         String DATE2 = "18:00:00";//第二次考勤，打卡时间小于这个时间是早退
 //        DateFormat df = new SimpleDateFormat("hh:mm:ss");
+        /*
+        *     0   代表正常           1   代表迟到早退
+         * */
         for (Check check : checklsit) {
             if (compTime(check.getClock_in_1().toString().substring(11, 18), DATE1)) {
 //                    System.out.println("迟到");
-                checkService.upCD("0", check.getFid());
+                checkService.upCD("1", check.getFid());
 //                   check.setLate("0");
             }
+            else{
+                checkService.upCD("0", check.getFid());
+            }
 
-/*
-* 有问题！！！！！！！！！！！！！！！！！！！！！！！！！！
-* */
+
             if (compTime(DATE2, check.getClock_in_2().toString().substring(11, 18))) {
-                checkService.upZT("0", check.getFid());
+                checkService.upZT("1", check.getFid());
 //                    System.out.println("早退");
             }
-        }
+            else {
+                checkService.upZT("0", check.getFid());
+            }
+
+    }
+
+
         List<Check> checklsit1 = checkService.selectCheckByTime(dateString);
+        model.addAttribute("nowday",dateString);
         model.addAttribute("todaycheck", checklsit1);
         return "table";
     }
@@ -78,28 +84,28 @@ public class TableController {
     }
 
 
-    public static void test() {
-
-        String DATE1 = "09:00:00";//第一次考勤，打卡时间大于这个时间是迟到
-        String DATE2 = "18:00:00";//第二次考勤，打卡时间小于这个时间是早退
-
-        DateFormat df = new SimpleDateFormat("hh:mm:ss");
-
-        try {
-            Date dt1 = df.parse(DATE1);
-            Date dt2 = df.parse(DATE2);
-            if (dt1.getTime() < dt2.getTime()) {
-                System.out.println("迟到");
-            } else {
-                System.out.println("正常");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        test();
-    }
+//    public static void test() {
+//
+//        String DATE1 = "09:00:00";//第一次考勤，打卡时间大于这个时间是迟到
+//        String DATE2 = "18:00:00";//第二次考勤，打卡时间小于这个时间是早退
+//
+//        DateFormat df = new SimpleDateFormat("hh:mm:ss");
+//
+//        try {
+//            Date dt1 = df.parse(DATE1);
+//            Date dt2 = df.parse(DATE2);
+//            if (dt1.getTime() < dt2.getTime()) {
+//                System.out.println("迟到");
+//            } else {
+//                System.out.println("正常");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        test();
+//    }
 
 }
