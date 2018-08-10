@@ -23,12 +23,10 @@ public class TableController {
         Date date = new Date();
         SimpleDateFormat formatter22 = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = formatter22.format(date);
-
-//        System.out.println(dateString);
+        //        System.out.println(dateString);
         List<Check> checklsit = checkService.selectCheckByTime(dateString);
         // List<String> beforelist = new ArrayList<String>();
         // List<String> laterlist = new ArrayList<String>();
-
         String DATE1 = "09:00:00";//第一次考勤，打卡时间大于这个时间是迟到
         String DATE2 = "18:00:00";//第二次考勤，打卡时间小于这个时间是早退
 //        DateFormat df = new SimpleDateFormat("hh:mm:ss");
