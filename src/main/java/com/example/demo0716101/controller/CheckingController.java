@@ -74,6 +74,7 @@ public class CheckingController {
                     check.setFlag('1');//设定当天第一次打卡标志位
                     checkService.insertTime(check);//将数据插入数据库中
                     mode.addAttribute("mes", "今天第一次打卡完成！");
+                    System.out.println(fid+",今天第一次打卡完成！");
                     mode.addAttribute("title", fid);
                     return "check";
 
@@ -90,6 +91,7 @@ public class CheckingController {
                     check2.setFlag('2');
                     checkService.updateOne(check2);
                     mode.addAttribute("mes", "今天第二次打卡完成！");
+                    System.out.println(fid+",今天第二次打卡完成！");
                     mode.addAttribute("title", fid);
                     return "check";
                 }
@@ -101,6 +103,7 @@ public class CheckingController {
                 String dateString33 = formatter33.format(date1);
                 if (check5.getFlag() == '2' && dateString22.equals(dateString33)) {
                     mode.addAttribute("mes", "您今天已经打卡俩次！请不要重复操作！");
+                    System.out.println(fid+",您今天已经打卡俩次！请不要重复操作！");
                     mode.addAttribute("title", fid);
                     return "check";
                 }

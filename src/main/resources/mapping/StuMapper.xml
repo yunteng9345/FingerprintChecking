@@ -13,7 +13,6 @@
 
     <delete id="deleteStu" parameterType="String">
         delete from u_user where uid=#{uid}
-
     </delete>
 
     <select id="selectOne" resultType="com.example.demo0716101.model.Student">
