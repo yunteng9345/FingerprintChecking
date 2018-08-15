@@ -17,7 +17,7 @@ public interface CheckMapper {
 
     List<Check> selectCheckByTime (@Param("time1")String time1);
 
-    Integer upCD(@Param("cd") String cd,@Param("fid") String fid);
-    Integer upZT(@Param("zt")String zt,@Param("fid") String fid);
+    Integer upCD(@Param("cd") String cd,@Param("fid") String fid,@Param("nowday") String nowday);
+    Integer upZT(@Param("zt")String zt,@Param("fid") String fid,@Param("nowday") String nowday);
 
 }

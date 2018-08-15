@@ -7,7 +7,7 @@
     <!--select * from u_user-->
     <!--</select>-->
     <insert id="insertTime" parameterType="com.example.demo0716101.model.Check">
-        insert into u_check(fid,clock_in_1,flag)values (#{fid},#{clock_in_1},#{flag})
+        insert into u_check(fid,clock_in_1,flag,nowday)values (#{fid},#{clock_in_1},#{flag},#{nowday})
     </insert>
 
     <!--<delete id="deleteStu" parameterType="String">-->
@@ -15,9 +15,8 @@
 
     <!--</delete>-->
 
-
     <update id="updateOne" parameterType="com.example.demo0716101.model.Check">
-        update u_check set clock_in_2 =#{clock_in_2},flag=#{flag} where fid=#{fid}
+        update u_check set clock_in_2 =#{clock_in_2},flag=#{flag} where fid=#{fid} and nowday=#{nowday}
     </update>
 
 
@@ -27,21 +26,22 @@
     </update>
 
     <select id="selectOne" resultType="com.example.demo0716101.model.Check">
-        select * from u_check where fid=#{fid}
+        select * from u_check where fid=#{fid} and nowday=#{nowday}
     </select>
     
     <select id="selectCheckByTime" resultType="com.example.demo0716101.model.Check">
-      select * from u_check c,u_user u where u.ufingerid=c.fid and c.clock_in_2 like #{time1}"%"
+      select * from u_check c,u_user u where u.ufingerid=c.fid and c.nowday=#{time1}
+
     </select>
 
 
 
     <update id="upCD"  >
-        update u_check set late =#{cd} where fid=#{fid}
+        update u_check set late =#{cd} where fid=#{fid} and nowday=#{nowday}
     </update>
 
     <update id="upZT">
-        update u_check set befor =#{zt} where fid=#{fid}
+        update u_check set befor =#{zt} where fid=#{fid} and nowday=#{nowday}
     </update>
 
 

@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/st/h-ui/css/H-ui.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/st/h-ui.admin/css/H-ui.admin.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/lib/Hui-iconfont/1.0.8/iconfont.css}"  />
+<!--<link rel="stylesheet" type="text/css" th:href="@{st/h-ui.admin/skin/default/skin.css}" id="skin" />-->
+<link rel="stylesheet" type="text/css" th:href="@{/st/h-ui.admin/css/style.css}"  />
 <head>
     <meta charset="UTF-8">
     <title>考勤表</title>
 </head>
 <body>
-<h1 th:text="${nowday}+'考勤'"></h1>
+
+<h1>考勤总汇</h1>
+<form th:action="@{/table/setTime}" th:method="get">
+    <!--<h1 th:text="${nowday}+'考勤'"></h1>-->
+   <h3> 选择日期查询考勤:<input type="date" name="inputdate" th:value="${nowday}"  /> <input type="submit"  style="width:70px;height:35px" value="搜索"/></h3>
+    <!--上班时间: <input type="time" name="worktime" th:value="${wtime}" />(默认为09:00)<br>-->
+    <!--下班时间: <input type="time" name="resttime" th:value="${rtime}"/>(默认为18:00)-->
+
+</form>
 
 
 
-<table border="1">
+<!--搜索-->
+<!--<form th:action="@{/timu/search}"  th:method="post" >-->
+    <!--<input type="text"  name="search" value="请输入关卡号"  >-->
+    <!--<input type="submit" value="搜索" >-->
+<!--</form>-->
+
+<table class="table table-border table-bordered table-hover table-bg">
     <tr>
 
         <th>姓名</th>

@@ -44,72 +44,65 @@ public class CheckingController {
 
             //判断此人今天是否已经打卡
             Check check4 = new Check();
+            Date nowdate = new Date();
+            SimpleDateFormat nowdateformatter = new SimpleDateFormat("yyyy-MM-dd");
+            String nowdate1 = nowdateformatter.format(nowdate);
+            //设置今天的时间和id，判断此人今天是否是第一次打卡
+            check4.setNowday(nowdate1);
             check4.setFid(fid);
             Check check5 = checkService.selectOne(check4);
-
-//            Date date7 = check5.getClock_in_1();
-//            Date date8 = new Date();
-//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//            SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
-//            String dateString = formatter.format(date7);
-//            String dateString1 = formatter1.format(date8);
-
-//            if (check5.getFlag() == '2' && dateString.equals(dateString1)) {
+            if (check5 == null) {//今天没有打卡
 //
-//                mode.addAttribute("mes", "您今天已经打卡俩次！请不要重复操作！");
-//                mode.addAttribute("title", fid);
-//                return "check";
-//            }
-
-            if (check5 == null) {
-                //已经录入指纹
-                // 1，查询是不是今天第一次打卡
+//              // 1，查询是不是今天第一次打卡
                 Check check = new Check();
                 check.setFid(fid);
-                //当天第一次打卡
-                Check check110 = checkService.selectOne(check);
-                if (check110 == null) {
-                    Date date4 = new Date();
-                    check.setClock_in_1(date4);
-                    check.setFlag('1');//设定当天第一次打卡标志位
-                    checkService.insertTime(check);//将数据插入数据库中
-                    mode.addAttribute("mes", "今天第一次打卡完成！");
-                    System.out.println(fid+",今天第一次打卡完成！");
-                    mode.addAttribute("title", fid);
-                    return "check";
-
-                }
-
-            } else {
+//                //当天第一次打卡
+//                Check check110 = checkService.selectOne(check);
+//                if (check110 == null) {
+                Date date4 = new Date();
+                check.setClock_in_1(date4);
+                check.setNowday(nowdate1);
+                check.setFlag('1');//设定当天第一次打卡标志位
+                checkService.insertTime(check);//将数据插入数据库中
+                mode.addAttribute("mes", "今天第一次打卡完成！");
+                System.out.println(fid + ",今天第一次打卡完成！");
+                mode.addAttribute("title", fid);
+                return "check";
+//
+            }
+//
+            else if (check5.getFlag() == '1') {
                 //当天第二次打卡
                 Check check2 = new Check();
                 check2.setFid(fid);
-                Check check22 = checkService.selectOne(check2);
-                if (check22.getFlag() == '1') {
-                    Date date3 = new Date();
-                    check2.setClock_in_2(date3);
-                    check2.setFlag('2');
-                    checkService.updateOne(check2);
-                    mode.addAttribute("mes", "今天第二次打卡完成！");
-                    System.out.println(fid+",今天第二次打卡完成！");
-                    mode.addAttribute("title", fid);
-                    return "check";
-                }
-                Date date = check5.getClock_in_1();
-                Date date1 = new Date();
-                SimpleDateFormat formatter22 = new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat formatter33 = new SimpleDateFormat("yyyy-MM-dd");
-                String dateString22 = formatter22.format(date);
-                String dateString33 = formatter33.format(date1);
-                if (check5.getFlag() == '2' && dateString22.equals(dateString33)) {
-                    mode.addAttribute("mes", "您今天已经打卡俩次！请不要重复操作！");
-                    System.out.println(fid+",您今天已经打卡俩次！请不要重复操作！");
-                    mode.addAttribute("title", fid);
-                    return "check";
-                }
+
+                Date date3 = new Date();
+                check2.setClock_in_2(date3);
+                check2.setNowday(nowdate1);
+                check2.setFlag('2');
+                checkService.updateOne(check2);
+                mode.addAttribute("mes", "今天第二次打卡完成！");
+                System.out.println(fid + ",今天第二次打卡完成！");
+                mode.addAttribute("title", fid);
+                return "check";
+            } else if (check5.getFlag() == '2') {
+//                Date date = check5.getClock_in_1();
+//                Date date1 = new Date();
+//                SimpleDateFormat formatter22 = new SimpleDateFormat("yyyy-MM-dd");
+//                SimpleDateFormat formatter33 = new SimpleDateFormat("yyyy-MM-dd");
+//                String dateString22 = formatter22.format(date);
+//                String dateString33 = formatter33.format(date1);
+//                if (check5.getFlag() == '2' && dateString22.equals(dateString33)) {
+                mode.addAttribute("mes", "您今天已经打卡俩次！请不要重复操作！");
+                System.out.println(fid + ",您今天已经打卡俩次！请不要重复操作！");
+                mode.addAttribute("title", fid);
+                return "check";
+//                }
             }
             mode.addAttribute("title", fid);
             return "check";
+
+
         }
     }
 }
