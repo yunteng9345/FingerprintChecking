@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/check")
@@ -81,6 +82,37 @@ public class CheckingController {
                 check2.setNowday(nowdate1);
                 check2.setFlag('2');
                 checkService.updateOne(check2);
+
+                /*
+                判断迟到与否
+                 */
+                String DATE1 = "09:00:00";//第一次考勤，打卡时间大于这个时间是迟到
+                String DATE2 = "18:00:00";//第二次考勤，打卡时间小于这个时间是早退
+                SimpleDateFormat formatter22 = new SimpleDateFormat("yyyy-MM-dd");
+                String nowdateString = formatter22.format(date3);
+                List<Check> checklsit1 = checkService.selectCheckByTime(nowdateString);
+                /*
+                 *     0   代表正常           1   代表迟到早退
+                 * */
+                for (Check check : checklsit1) {
+                    if (TableController.compTime(check.getClock_in_1().toString().substring(11, 18), DATE1)) {
+//                    System.out.println("迟到");
+                        checkService.upCD("1", check.getFid(), nowdateString);
+//                   check.setLate("0");
+                    } else {
+                        checkService.upCD("0", check.getFid(), nowdateString);
+                    }
+
+                    if (TableController.compTime(DATE2, check.getClock_in_2().toString().substring(11, 18))) {
+                        checkService.upZT("1", check.getFid(), nowdateString);
+//                    System.out.println("早退");
+                    } else {
+                        checkService.upZT("0", check.getFid(), nowdateString);
+                    }
+
+                }
+
+
                 mode.addAttribute("mes", "今天第二次打卡完成！");
                 System.out.println(fid + ",今天第二次打卡完成！");
                 mode.addAttribute("title", fid);

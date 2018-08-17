@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo0716101.Dao.StuMapper" >
+<mapper namespace="com.example.demo0716101.Dao.StuMapper">
 
 
     <select id="showAllStu" resultType="com.example.demo0716101.model.Student">
@@ -18,5 +18,43 @@
     <select id="selectOne" resultType="com.example.demo0716101.model.Student">
         select * from u_user where ufingerid=#{ufingerid}
     </select>
+
+    <select id="search" resultType="com.example.demo0716101.model.Check"
+            parameterType="com.example.demo0716101.model.Check">
+
+        select * from u_user u ,u_check c
+
+            where  u.ufingerid=c.fid
+
+            <if test="uname!=''">
+               and  uname like '%' #{uname} '%'
+            </if>
+            <if test="uacademy != ''">
+                and uacademy=#{uacademy}
+            </if>
+
+            <if test="uclass != ''">
+                and uclass=#{uclass}
+            </if>
+
+        <if test="late != ''">
+            and late=#{late}
+        </if>
+
+        <if test="befor != ''">
+            and befor=#{befor}
+        </if>
+
+        <if test="nowday != ''">
+            and nowday=#{nowday}
+        </if>
+
+            and 1=1
+
+
+
+
+    </select>
+
 
 </mapper>

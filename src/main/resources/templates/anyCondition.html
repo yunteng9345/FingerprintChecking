@@ -11,10 +11,44 @@
 </head>
 <body>
 
-<h1>考勤总汇</h1>
-<form th:action="@{/table/setTime}" th:method="get">
+<h1>多条件查询考勤总汇</h1>
+<form th:action="@{/table/search}" th:method="get">
     <!--<h1 th:text="${nowday}+'考勤'"></h1>-->
-   <h3> 选择日期查询考勤:<input type="date" name="inputdate" th:value="${nowday}"  /> <input type="submit"  style="width:70px;height:35px" value="搜索"/></h3>
+   <h3> 姓名:<input type="text" name="name" th:value="null" />(可进行模糊查询)<br>
+
+        院系：<select  name="academy"   >
+           <option th:value="null"></option>
+           <option th:value="信息科学与工程学院">信息科学与工程学院</option>
+           <option th:value="物理与机电学院" >物理与机电学院</option>
+           <option th:value="数学与统计学院" >数学与统计学院</option>
+           <option th:value="音乐舞蹈学院" >音乐舞蹈学院</option>
+            </select>
+
+       班级：<select name="classs"    >
+           <option th:value="null"></option>
+           <option th:value="计科">计科</option>
+           <option th:value="电子" >电子</option>
+           <option th:value="通信" >通信</option>
+           <option th:value="音乐" >音乐</option>
+       </select>
+
+       <br>
+
+       是否迟到：<select name="chidao"    >
+           <option th:value="null"></option>
+           <option  th:value="1" >是</option>
+           <option th:value="0">否</option>
+       </select>
+       是否早退：<select name="zaotui"   >
+           <option th:value="null"></option>
+           <option th:value="1" >是</option>
+           <option th:value="0">否</option>
+       </select>
+
+       时间：<input type="date" name="inputtime" th:value="null"  />
+
+
+       <input type="submit"  style="width:70px;height:35px" value="搜索"/></h3>
     <!--上班时间: <input type="time" name="worktime" th:value="${wtime}" />(默认为09:00)<br>-->
     <!--下班时间: <input type="time" name="resttime" th:value="${rtime}"/>(默认为18:00)-->
 

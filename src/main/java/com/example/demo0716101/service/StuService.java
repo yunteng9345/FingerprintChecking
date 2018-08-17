@@ -1,7 +1,9 @@
 package com.example.demo0716101.service;
 
 import com.example.demo0716101.Dao.StuMapper;
+import com.example.demo0716101.model.Check;
 import com.example.demo0716101.model.Student;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,9 @@ public class StuService {
 
     public  Student selectOne(Student  student){return  stuMapper.selectOne(student);}
 
+    public List<Check> search(Check check){
+        return stuMapper.search(check);
+    }
 
 }
 
