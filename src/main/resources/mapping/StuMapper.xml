@@ -24,18 +24,19 @@
 
         select * from u_user u ,u_check c
 
-            where  u.ufingerid=c.fid
+        where u.ufingerid=c.fid
 
-            <if test="uname!=''">
-               and  uname like '%' #{uname} '%'
-            </if>
-            <if test="uacademy != ''">
-                and uacademy=#{uacademy}
-            </if>
+        <if test="uname!=''">
+            and uname like '%' #{uname} '%'
+        </if>
 
-            <if test="uclass != ''">
-                and uclass=#{uclass}
-            </if>
+        <if test="uacademy != ''">
+            and uacademy=#{uacademy}
+        </if>
+
+        <if test="uclass != ''">
+            and uclass=#{uclass}
+        </if>
 
         <if test="late != ''">
             and late=#{late}
@@ -49,11 +50,80 @@
             and nowday=#{nowday}
         </if>
 
-            and 1=1
+        and 1=1
+
+
+    </select>
 
 
 
+    <!--漂流书-->
 
+
+    <insert id="addUser" parameterType="com.example.demo0716101.model.User">
+        insert into user(openid,uname,usex,uicon)values (#{openid},#{uname},#{usex},#{uicon})
+    </insert>
+
+    <select id="selectUser" resultType="com.example.demo0716101.model.User">
+        select * from user where openid=#{openid}
+    </select>
+
+    <!--添加书-->
+
+    <insert id="addBook" parameterType="com.example.demo0716101.model.Book">
+        insert into book(openid,booktitle,isbn,bookpic,bookauthor,send_word,bookaddress,ownBookBar)values (#{openid},#{booktitle},#{isbn},#{bookpic},#{bookauthor},#{send_word},#{bookaddress},#{ownBookBar})
+    </insert>
+
+    <select id="selectBook" resultType="com.example.demo0716101.model.Book">
+        select * from book where isbn=#{isbn}
+    </select>
+
+    <select id="allBook" resultType="com.example.demo0716101.model.Book">
+        select * from book
+    </select>
+    <select id="allBookByOpenid" resultType="com.example.demo0716101.model.Book">
+        select * from book where openid=#{openid}
+    </select>
+
+
+
+    <insert id="addBookBar" parameterType="com.example.demo0716101.model.BookBar">
+        insert into bookbar(openid,name,addr,miaoshu)values (#{openid},#{name},#{addr},#{miaoshu})
+    </insert>
+
+
+    <select id="allBookBarByOpenid" resultType="com.example.demo0716101.model.BookBar">
+        select * from bookbar where openid=#{openid}
+    </select>
+
+    <select id="allBookByBarName" resultType="com.example.demo0716101.model.Book">
+        select * from book where ownBookBar=#{name}
+    </select>
+
+
+
+    <insert id="insertappoint" parameterType="com.example.demo0716101.model.Appoint">
+        insert into chat(openid1,openid2,content,isbn,flag)values (#{openid1},#{openid2},#{content},#{isbn},#{flag})
+    </insert>
+
+    <select id="selectAppoint" resultType="com.example.demo0716101.model.Appoint">
+        select * from chat c,user u,book b where c.isbn=b.isbn and c.openid1=u.openid and  c.openid2=#{openid2}
+    </select>
+
+    <!--<select id="selectAppoint" resultType="com.example.demo0716101.model.Appoint">-->
+         <!--select * from chat where openid2=#{openid2}-->
+    <!--</select>-->
+
+
+    <insert id="insertComment" parameterType="com.example.demo0716101.model.Comment">
+        insert into comment(openid,isbn,comment)values (#{openid},#{isbn},#{comment})
+    </insert>
+
+
+    <select id="showAllComment" resultType="com.example.demo0716101.model.Comment">
+        select * from comment c,user u
+         where c.isbn=#{isbn}
+         and c.openid=u.openid order by c.cno desc
     </select>
 
 

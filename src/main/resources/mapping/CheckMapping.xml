@@ -35,7 +35,6 @@
     </select>
 
 
-
     <update id="upCD"  >
         update u_check set late =#{cd} where fid=#{fid} and nowday=#{nowday}
     </update>

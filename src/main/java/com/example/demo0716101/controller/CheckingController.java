@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -29,8 +30,17 @@ public class CheckingController {
      * 2。
      * */
     @RequestMapping(value = "/scm", method = RequestMethod.GET)
-    public String showAllStudent(ModelMap mode, String fid) {
+    public String showAllStudent(ModelMap mode, String fid, HttpServletRequest request) {
 
+//        request.getHeader("User-Agent");    //就是取得客户端的系统版本
+//        request.getRemoteAddr();    //取得客户端的IP
+//        request.getRemoteHost();    //取得客户端的主机名
+//        request.getRemotePort();    //取得客户端的端口
+//        request.getRemoteUser();    //取得客户端的用户
+//        request.getLocalAddr();    //取得服务器IP
+//        request.getLocalPort();    //取得服务器端口
+//        System.out.println(request.getRemotePort());
+//        System.out.println(request.getLocalAddr());
 
         //判断此人有没有录入信息
         Student student = new Student();
